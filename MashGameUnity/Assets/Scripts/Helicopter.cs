@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Helicopter : MonoBehaviour {
 
-	[SerializeField] private float health;
+	[SerializeField] private float maxHealth;
 	[SerializeField] private int maxPassengers;
+	private float health;
 	private int soldierCount;
-	private bool isFull;
+	private Vector3 startPos;
 
 	public float Health { get { return health; } set { health = value; } }
 	public int MaxPassengers { get { return maxPassengers; } }
 	public int SoldierCount { get { return soldierCount; } }
 
 	void Start () {
-
+		startPos = transform.position;
+		health = maxHealth;
 	}
 
 	void Update () {
 		Movement();
+		Reset();
 	}
 
 	private void Movement(){
@@ -77,5 +80,14 @@ public class Helicopter : MonoBehaviour {
 
 	private void Explode(){
 		Destroy(this.gameObject);
+	}
+
+	private void Reset(){
+		if(Input.GetKeyDown(KeyCode.R)){
+			transform.position = startPos;
+			health = maxHealth;
+			soldierCount = 0;
+			GameManager.Instance.ResetGame();
+		}
 	}
 }

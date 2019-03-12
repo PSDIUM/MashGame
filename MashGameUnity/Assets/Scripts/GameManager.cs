@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	private static GameManager _instance;
+	[SerializeField] GameObject soldierPrefab;
+	[SerializeField] Vector3[] soldierStartPos;
 	private float score;
 	private int currentInjuredSoldiers;
 	private int totalInjuredSoldiers;
@@ -23,8 +25,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start(){
-		totalInjuredSoldiers =  GameObject.Find("Soldiers").transform.childCount;
+		GameObject soldiers = GameObject.Find("Soldiers");
+		totalInjuredSoldiers =  soldiers.transform.childCount;
 		currentInjuredSoldiers = totalInjuredSoldiers;	
+
+		soldierStartPos = new Vector3[soldiers.transform.childCount];
+		for(int x=0; x<soldiers.transform.childCount; x++){
+			soldierStartPos[x] = soldiers.transform.GetChild(x).transform.position;
+		}
 	}
 
 	public void CalculateScore(int dropOff){
@@ -47,6 +55,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetGame(){
-
+		score = 0;
+		foreach(Transform soldier in GameObject.Find("Soldiers").transform){
+			Destroy(soldier.gameObject);
+		}
+		for(int x=0; x<soldierStartPos.Length; x++){
+			Instantiate(soldierPrefab, soldierStartPos[x], Quaternion.identity);
+		}
 	}
 }

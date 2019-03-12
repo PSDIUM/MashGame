@@ -575,6 +575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69a342f7f26b4876a41666243dac635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 1173419388888010, guid: 6e74a3db3318b4f7b9116b2042852587,
+    type: 2}
+  soldierStartPos: []
 --- !u!4 &658328442
 Transform:
   m_ObjectHideFlags: 0
@@ -714,6 +717,11 @@ Prefab:
         type: 2}
       propertyPath: maxPassengers
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114353072013798326, guid: 7a89580c3807b4b23a6ba4b8a2293688,
+        type: 2}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a89580c3807b4b23a6ba4b8a2293688, type: 2}
