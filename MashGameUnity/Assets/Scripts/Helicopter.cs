@@ -60,8 +60,8 @@ public class Helicopter : MonoBehaviour {
 
 	private void DropSoldiers(){
 		if(soldierCount>0){
-			GameManager.Instance.CalculateScore(soldierCount);
 			Debug.Log(soldierCount + " Soldiers have been dropped off");
+			GameManager.Instance.CalculateScore(soldierCount);
 			soldierCount = 0;
 		}
 	}
@@ -70,7 +70,7 @@ public class Helicopter : MonoBehaviour {
 		health-=25;
 		Debug.Log("Helicopter has taken damage!");
 		if(health<=0){
-			//Trigger Lose game
+			GameManager.Instance.LoseGame();
 			Explode();
 		}
 	}

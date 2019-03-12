@@ -183,6 +183,10 @@ Prefab:
       propertyPath: m_Name
       value: Hospital2
       objectReference: {fileID: 0}
+    - target: {fileID: 1237167697212704, guid: b15b16faaaeda414faa021105045bc58, type: 2}
+      propertyPath: m_TagString
+      value: Hospital
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b15b16faaaeda414faa021105045bc58, type: 2}
   m_IsPrefabParent: 0
@@ -544,6 +548,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e74a3db3318b4f7b9116b2042852587, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &658328440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 658328442}
+  - component: {fileID: 658328441}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &658328441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658328440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69a342f7f26b4876a41666243dac635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &658328442
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658328440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.62118816, y: 0.20256579, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &767697487
 Prefab:
   m_ObjectHideFlags: 0
@@ -665,6 +709,11 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114353072013798326, guid: 7a89580c3807b4b23a6ba4b8a2293688,
+        type: 2}
+      propertyPath: maxPassengers
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a89580c3807b4b23a6ba4b8a2293688, type: 2}

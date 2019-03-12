@@ -6,9 +6,13 @@ public class GameManager : MonoBehaviour {
 
 	private static GameManager _instance;
 	private float score;
+	private int currentInjuredSoldiers;
+	private int totalInjuredSoldiers;
 
 	public static GameManager Instance { get { return _instance; } }
 	public float Score { get { return score; } set { score = value; } }
+	public int InjuredSoldiers {get {return totalInjuredSoldiers; } }
+	public int CurrentInjuredSoldiers {get {return currentInjuredSoldiers; } }
 
 	void Awake(){
 		if(_instance !=null && _instance != this){
@@ -18,21 +22,31 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	void Start(){
+		totalInjuredSoldiers =  GameObject.Find("Soldiers").transform.childCount;
+		currentInjuredSoldiers = totalInjuredSoldiers;	
+	}
+
 	public void CalculateScore(int dropOff){
 		int scoreGain = 25*dropOff;
 		score+=scoreGain;
 		Debug.Log("Score: " + score);
+
+		currentInjuredSoldiers-=dropOff;
+		if(currentInjuredSoldiers<=0){
+			WinGame();
+		}
 	}
 
-	private void WinGame(){
-
+	public void WinGame(){
+		Debug.Log("You collected all the soldiers!");
 	}
 
-	private void LoseGame(){
-
+	public void LoseGame(){
+		Debug.Log("Game Over!");
 	}
 
-	private void ResetGame(){
+	public void ResetGame(){
 
 	}
 }

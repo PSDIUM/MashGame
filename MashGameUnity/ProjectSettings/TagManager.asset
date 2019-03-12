@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Soldier
   - Helicopter
-  - Hosptial
   - Tree
+  - Hospital
   layers:
   - Default
   - TransparentFX
