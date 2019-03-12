@@ -59,10 +59,11 @@ public class Helicopter : MonoBehaviour {
 	}
 
 	private void DropSoldiers(){
-		//Add soldier count to game manager for score
-
-		Debug.Log(soldierCount + " Soldiers have been dropped off");
-		soldierCount = 0;
+		if(soldierCount>0){
+			GameManager.Instance.CalculateScore(soldierCount);
+			Debug.Log(soldierCount + " Soldiers have been dropped off");
+			soldierCount = 0;
+		}
 	}
 
 	private void DamageHelicopter(){
