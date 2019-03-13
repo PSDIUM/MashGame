@@ -8,7 +8,8 @@ public class Soldier : MonoBehaviour {
 	private float bleedTime;
 
 	void Start(){
-		bleedTime = deathTime;
+		float modifier = GameManager.Instance.SoldierDeathModifier;
+		bleedTime = deathTime - modifier;
 	}
 
 	void Update(){
@@ -23,6 +24,8 @@ public class Soldier : MonoBehaviour {
 	}
 
 	private void Die(){
+		GameManager.Instance.RemoveInjuredSoldier(1);
+		GameManager.Instance.DecreaseMorale();
 		Destroy(this.gameObject);
 	}
 }

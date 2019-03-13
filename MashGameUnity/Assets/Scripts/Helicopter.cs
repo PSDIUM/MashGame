@@ -55,6 +55,7 @@ public class Helicopter : MonoBehaviour {
 	private void PickupSoldier(GameObject soldier){
 		if(soldierCount<maxPassengers){
 			soldierCount++;
+			GameManager.Instance.RemoveInjuredSoldier(1);
 			Destroy(soldier);
 		} else {
 			Debug.Log("Helicoper is full");
