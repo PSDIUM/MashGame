@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update(){
 		GameTimer();
+		ResetGame();
 	}
 
 	private void GameTimer(){
@@ -103,22 +104,27 @@ public class GameManager : MonoBehaviour {
 		DialogueManager.Instance.SetDialogue("Game Over! You got yourself killed soldier!");
 	}
 
-	public void ResetGame(){
-		score = 0;
-		morale = maxMorale;
+	public void ResetGame () {
+		if (Input.GetKeyDown (KeyCode.R)) {
+			score = 0;
+			scoreText.text = "Score: " + score;
+			morale = maxMorale;
 
-		if(player!=null){
-			Destroy(player);
-		}
-		GameObject newPlayer = Instantiate(Resources.Load("Prefabs/Helicopter") as GameObject);
-		player  = newPlayer;
+			if (player != null) {
+				Destroy (player);
+			}
+			GameObject newPlayer = Instantiate (Resources.Load ("Prefabs/Helicopter") as GameObject);
+			player = newPlayer;
 
-		foreach(Transform soldier in GameObject.Find("Soldiers").transform){
-			Destroy(soldier.gameObject);
-		}
-		for(int x=0; x<soldierStartPos.Length; x++){
-			GameObject soldier = Instantiate(soldierPrefab, soldierStartPos[x], Quaternion.identity);
-			soldier.transform.parent = soldiers.transform;
+			foreach (Transform soldier in GameObject.Find("Soldiers").transform) {
+				Destroy (soldier.gameObject);
+			}
+			for (int x = 0; x < soldierStartPos.Length; x++) {
+				GameObject soldier = Instantiate (soldierPrefab, soldierStartPos [x], Quaternion.identity);
+				soldier.transform.parent = soldiers.transform;
+			}
+
+			DialogueManager.Instance.DisableDialogue ();
 		}
 	}
 }

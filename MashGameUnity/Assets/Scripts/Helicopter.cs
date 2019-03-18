@@ -22,7 +22,7 @@ public class Helicopter : MonoBehaviour {
 	void Update () {
 		FollowMouse();
 		Movement();
-		Reset();
+//		Reset();
 	}
 
 	private void Movement(){

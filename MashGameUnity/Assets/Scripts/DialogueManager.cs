@@ -24,6 +24,10 @@ public class DialogueManager : MonoBehaviour {
 		textBox.SetActive(false);
 	}
 
+	public void DisableDialogue(){
+		textBox.SetActive(false);
+	}
+
 	public void SetDialogue(string text){
 		textBox.SetActive(true);
 		dialogue.text = text;
