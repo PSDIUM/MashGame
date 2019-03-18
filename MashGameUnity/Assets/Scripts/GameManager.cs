@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject soldierPrefab;
 	[SerializeField] Vector3[] soldierStartPos;
 	[SerializeField] private int morale;
+	[SerializeField] private HealthBar moraleBar;
+	private int maxMorale;
 	private float score;
 	private int currentInjuredSoldiers;
 	private int totalInjuredSoldiers;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour {
 		soldiers = GameObject.Find("Soldiers");
 		totalInjuredSoldiers =  soldiers.transform.childCount;
 		currentInjuredSoldiers = totalInjuredSoldiers;	
+		maxMorale = morale;
 
 		soldierStartPos = new Vector3[soldiers.transform.childCount];
 		for(int x=0; x<soldiers.transform.childCount; x++){
@@ -59,8 +62,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void DecreaseMorale(){
-		morale -= 25;
+		morale -= 10;
 		Debug.Log("Dammit, soldiers are dying out there what are you doing!?");
+		float percentage = (float)morale/(float)maxMorale;
+		moraleBar.SetSize(percentage);
+
 		if(morale<=0){
 			LoseGame();
 		}

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Soldier : MonoBehaviour {
 
 	[SerializeField]private float deathTime;
+	[SerializeField]private HealthBar healthBar;
 	private float bleedTime;
+
 
 	void Start(){
 		float modifier = GameManager.Instance.SoldierDeathModifier;
@@ -19,13 +21,15 @@ public class Soldier : MonoBehaviour {
 
 	private void Bleeding(){
 		bleedTime-= Time.deltaTime;
+		UpdateBleedBar();
 		if(bleedTime<=0){
 			Die();
 		}
 	}
 
-	private void TestMethod(){
-		
+	private void UpdateBleedBar(){
+		float percentage = bleedTime/deathTime;
+		healthBar.SetSize(percentage);
 	}
 
 	private void Die(){
