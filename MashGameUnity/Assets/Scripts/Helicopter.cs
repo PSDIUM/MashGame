@@ -45,7 +45,7 @@ public class Helicopter : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D col){
 		if(col.gameObject.tag.Equals("Soldier")){
-			Debug.Log("Picking up solider");
+			DialogueManager.Instance.SetDialogue("Picking up a solider");
 			PickupSoldier(col.gameObject);
 		} 	
 		if(col.gameObject.tag.Equals("Hospital")){
@@ -67,13 +67,13 @@ public class Helicopter : MonoBehaviour {
 			GameManager.Instance.RemoveInjuredSoldier(1);
 			Destroy(soldier);
 		} else {
-			Debug.Log("Helicoper is full");
+			DialogueManager.Instance.SetDialogue("Dammit, the Helicoper is full");
 		}
 	}
 
 	private void DropSoldiers(){
 		if(soldierCount>0){
-			Debug.Log(soldierCount + " Soldiers have been dropped off");
+			DialogueManager.Instance.SetDialogue("Hell yeh, " + soldierCount + " Soldiers have been dropped off");
 			GameManager.Instance.CalculateScore(soldierCount);
 			soldierCount = 0;
 		}
@@ -81,7 +81,7 @@ public class Helicopter : MonoBehaviour {
 
 	private void DamageHelicopter(){
 		health-=25;
-		Debug.Log("Helicopter has taken damage!");
+		DialogueManager.Instance.SetDialogue("Dammit! The Helicopter has taken damage!");
 		if(health<=0){
 			GameManager.Instance.LoseGame();
 			Explode();

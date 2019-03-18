@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
 
 	public void DecreaseMorale(){
 		morale -= 10;
-		Debug.Log("Dammit, soldiers are dying out there what are you doing!?");
+		DialogueManager.Instance.SetDialogue("Dammit, soldiers are dying out there what are you doing!?");
 		float percentage = (float)morale/(float)maxMorale;
 		moraleBar.SetSize(percentage);
 
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoseGame(){
-		Debug.Log("Game Over! You achieved a score of: " + score);
+		DialogueManager.Instance.SetDialogue("Game Over! You got yourself killed soldier!");
 	}
 
 	public void ResetGame(){
