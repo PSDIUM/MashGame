@@ -20,6 +20,7 @@ public class Helicopter : MonoBehaviour {
 	}
 
 	void Update () {
+		FollowMouse();
 		Movement();
 		Reset();
 	}
@@ -50,6 +51,14 @@ public class Helicopter : MonoBehaviour {
 		if(col.gameObject.tag.Equals("Hospital")){
 			DropSoldiers();
 		}
+	}
+
+	private void FollowMouse(){
+
+		Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+     	transform.rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
+		
 	}
 
 	private void PickupSoldier(GameObject soldier){

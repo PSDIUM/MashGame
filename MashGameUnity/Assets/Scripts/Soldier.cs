@@ -10,6 +10,7 @@ public class Soldier : MonoBehaviour {
 	void Start(){
 		float modifier = GameManager.Instance.SoldierDeathModifier;
 		bleedTime = deathTime - modifier;
+		Debug.Log(bleedTime);
 	}
 
 	void Update(){
@@ -21,6 +22,10 @@ public class Soldier : MonoBehaviour {
 		if(bleedTime<=0){
 			Die();
 		}
+	}
+
+	private void TestMethod(){
+		
 	}
 
 	private void Die(){
