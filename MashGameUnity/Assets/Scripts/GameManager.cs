@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Vector3[] soldierStartPos;
 	[SerializeField] private int morale;
 	[SerializeField] private HealthBar moraleBar;
+	[SerializeField] private Text scoreText;
+	[SerializeField] private GameObject player;
 	private int maxMorale;
 	private float score;
 	private int currentInjuredSoldiers;
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour {
 	public void CalculateScore(int dropOff){
 		int scoreGain = (int)(25*dropOff*timer);
 		score+=scoreGain;
+		scoreText.text = "Score: " + score;
 		Debug.Log("Score: " + score);
 	}
 
@@ -101,6 +105,14 @@ public class GameManager : MonoBehaviour {
 
 	public void ResetGame(){
 		score = 0;
+		morale = maxMorale;
+
+		if(player!=null){
+			Destroy(player);
+		}
+		GameObject newPlayer = Instantiate(Resources.Load("Prefabs/Helicopter") as GameObject);
+		player  = newPlayer;
+
 		foreach(Transform soldier in GameObject.Find("Soldiers").transform){
 			Destroy(soldier.gameObject);
 		}
